@@ -22,15 +22,15 @@ Frontend Mentor challenges help you improve your coding skills by building reali
 ### Links
 
 - Solution
-  URL: [https://github.com/FulbertoDev/QR-Code-Card-Component-with-Tailwind-CSS](https://github.com/FulbertoDev/QR-Code-Card-Component-with-Tailwind-CSS)
+  URL: [https://www.frontendmentor.io/solutions/country-info-web-app-tailwind-vue3-axios-_seF9ncktZ](https://www.frontendmentor.io/solutions/country-info-web-app-tailwind-vue3-axios-_seF9ncktZ)
 - Live Site
-  URL: [https://qr-code-card-component-with-tailwind-css.vercel.app/](https://qr-code-card-component-with-tailwind-css.vercel.app/)
+  URL: [https://rest-countries-info-api-tailwind-vue3.vercel.app/](https://rest-countries-info-api-tailwind-vue3.vercel.app/)
 
 ## My process
 
 ### Built with
 
-- HTML5
+- Vue3
 - Axios
 - [Tailwind CSS](https://tailwindcss.com/)
 
