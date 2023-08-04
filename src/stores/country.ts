@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
-import axios, { Axios } from 'axios'
+import axios from 'axios'
 import collect from 'collect.js'
 
 export const useCountryStore = defineStore('country', () => {

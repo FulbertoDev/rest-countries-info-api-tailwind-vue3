@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCountryStore } from '@/stores/country'
 import { useRouter } from 'vue-router'
-import { computed, onBeforeMount, ref } from 'vue'
+import { computed, onBeforeMount } from 'vue'
 import { ArrowLeftIcon } from '@heroicons/vue/24/solid'
 
 const store = useCountryStore()
@@ -16,7 +16,9 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <main class="p-4 lg:p-24 h-full z-0 w-full text-very-dark-blue-light-mode dark:text-white overflow-y-auto">
+  <main
+    class="p-4 lg:p-24 h-full z-0 w-full text-very-dark-blue-light-mode dark:text-white overflow-y-auto"
+  >
     <div class="flex flex-col h-full w-full">
       <button
         @click="router.back()"
@@ -33,7 +35,8 @@ onBeforeMount(() => {
           <span class="text-3xl font-extrabold">{{ (country as any)?.name.common }}</span>
           <div class="grid grid-cols-1 md:grid-cols-2 my-12">
             <div class="flex flex-col text-lg space-y-2">
-              <span><strong>Native Name:</strong>
+              <span
+                ><strong>Native Name:</strong>
                 {{ (Object.values((country as any)?.name?.nativeName)[0] as any).common }}
               </span>
               <span
@@ -53,7 +56,7 @@ onBeforeMount(() => {
                 ><strong>Currencies:</strong>
                 {{
                   Object.values((country as any)?.currencies ?? {})
-                    .map((item:any) => item.name)
+                    .map((item: any) => item.name)
                     .join(' - ')
                 }}</span
               >
