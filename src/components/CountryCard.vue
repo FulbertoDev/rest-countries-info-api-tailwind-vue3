@@ -17,7 +17,7 @@ function onclick() {
 
 <template>
   <div
-    class="flex flex-col bg-white dark:bg-dark-blue rounded-md md:mx-0 mx-6 dark:text-white"
+    class="flex flex-col h-fit bg-white dark:bg-dark-blue rounded-md md:mx-0 mx-6 dark:text-white"
     @click="onclick"
   >
     <img class="aspect-video object-cover rounded-t-md" :src="props.country?.flags.svg" alt="flag" />
