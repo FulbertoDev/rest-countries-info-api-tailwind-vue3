@@ -27,7 +27,7 @@ onBeforeMount(() => {
         <ArrowLeftIcon class="w-4" />
         <span>Back</span>
       </button>
-      <div class="my-12 overflow-hidden h-full no-scrollbar w-full flex-col lg:flex-row gap-16">
+      <div class="my-12 h-full no-scrollbar w-full flex flex-col lg:flex-row gap-16">
         <div class="w-full lg:w-2/5">
           <img class="w-full aspect-video" :src="`${(country as any)?.flags.svg}`" alt="flag" />
         </div>

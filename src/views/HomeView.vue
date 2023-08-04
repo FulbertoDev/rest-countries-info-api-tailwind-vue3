@@ -10,10 +10,23 @@ const countries = computed(() => {
   var result = store.countries
 
   if (store.query.length > 0) {
-    result = result.filter((item:any) => item?.name.toLowerCase().includes(store.query.toLowerCase()))
+    result = result.filter((item: any) => {
+      if (!item) return false
+      console.log(item.name)
+      let commonNameMatch = item.name.common
+        .toString()
+        .toLowerCase()
+        .includes(store.query.toString().toLowerCase())
+      let officialNameMatch = item.name.official
+        .toString()
+        .toLowerCase()
+        .includes(store.query.toString().toLowerCase())
+
+      return commonNameMatch || officialNameMatch
+    })
   }
   if (store.region != null) {
-    result = result.filter((item: any) => item?.region === store.region)
+    result = result.filter((item: any) => item.region === store.region)
   }
 
   return result
