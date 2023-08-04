@@ -8,16 +8,15 @@ const store = useCountryStore()
 const router = useRouter()
 
 const country = computed(() => store.country)
-
 onBeforeMount(() => {
-  if (!country.value) {
+  if (!(country as any)?.value) {
     router.back()
   }
 })
 </script>
 
 <template>
-  <main class="p-4 lg:p-24 h-full z-0 w-full text-very-dark-blue-light-mode dark:text-white">
+  <main class="p-4 lg:p-24 h-full z-0 w-full text-very-dark-blue-light-mode dark:text-white overflow-y-auto">
     <div class="flex flex-col h-full w-full">
       <button
         @click="router.back()"
@@ -26,39 +25,41 @@ onBeforeMount(() => {
         <ArrowLeftIcon class="w-4" />
         <span>Back</span>
       </button>
-      <div class="my-12 overflow-y-auto h-full no-scrollbar w-full flex gap-16">
-        <div class="w-2/5">
-          <img class="w-full aspect-video" :src="`${country?.flags.svg}`" alt="flag" />
+      <div class="my-12 overflow-hidden h-full no-scrollbar w-full flex-col lg:flex-row gap-16">
+        <div class="w-full lg:w-2/5">
+          <img class="w-full aspect-video" :src="`${(country as any)?.flags.svg}`" alt="flag" />
         </div>
-        <div class="w-3/5 flex flex-col py-8">
-          <span class="text-3xl font-extrabold">{{ country.name.common }}</span>
+        <div class="w-full lg:w-3/5 flex flex-col py-8">
+          <span class="text-3xl font-extrabold">{{ (country as any)?.name.common }}</span>
           <div class="grid grid-cols-1 md:grid-cols-2 my-12">
             <div class="flex flex-col text-lg space-y-2">
-              <span><strong>Native Name:</strong> {{ Object.values(country.name.nativeName)[0].common ?? '--' }}</span>
+              <span><strong>Native Name:</strong>
+                {{ (Object.values((country as any)?.name?.nativeName)[0] as any).common }}
+              </span>
               <span
                 ><strong>Population:</strong>
-                {{ new Intl.NumberFormat('en-US').format(country.population) }}</span
+                {{ new Intl.NumberFormat('en-US').format((country as any)?.population) }}</span
               >
-              <span><strong>Region:</strong> {{ country.region }}</span>
-              <span><strong>Sub Region:</strong> {{ country.subregion }}</span>
-              <span><strong>Capital:</strong> {{ country.capital[0] ?? '--' }}</span>
+              <span><strong>Region:</strong> {{ (country as any)?.region }}</span>
+              <span><strong>Sub Region:</strong> {{ (country as any)?.subregion }}</span>
+              <span><strong>Capital:</strong> {{ (country as any)?.capital[0] ?? '--' }}</span>
             </div>
             <div class="flex flex-col text-lg space-y-2">
               <span
                 ><strong>Top Level Domain:</strong>
-                {{ (country.tld ?? []).join(' - ') ?? '--' }}</span
+                {{ ((country as any)?.tld ?? []).join(' - ') ?? '--' }}</span
               >
               <span
                 ><strong>Currencies:</strong>
                 {{
-                  Object.values(country.currencies ?? {})
-                    .map((item) => item.name)
+                  Object.values((country as any)?.currencies ?? {})
+                    .map((item:any) => item.name)
                     .join(' - ')
                 }}</span
               >
               <span
                 ><strong>Languages:</strong>
-                {{ Object.values(country.languages).join(' - ') }}
+                {{ Object.values((country as any)?.languages ?? {}).join(' - ') }}
               </span>
             </div>
           </div>
